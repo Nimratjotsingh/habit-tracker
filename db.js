@@ -1,0 +1,7 @@
+const mongoose = require('mongoose');
+
+module.exports = mongoose.connect(process.env.DB_LINK).then(()=>{
+    console.log('DB Connected Successfully');
+}).catch((e)=>{
+    console.log(e);
+})
