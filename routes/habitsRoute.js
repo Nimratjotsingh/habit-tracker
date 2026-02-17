@@ -9,4 +9,6 @@ router.patch('/api/complete-habit/:id',authMiddleware,controller.completeHabit)
 
 router.post('/api/create-habit',authMiddleware,controller.createHabit)
 
+router.delete('/api/delete-habit/:id',authMiddleware,controller.deleteHabit)
+
 module.exports = router;

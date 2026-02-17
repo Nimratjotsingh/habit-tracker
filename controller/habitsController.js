@@ -93,3 +93,19 @@ exports.completeHabit = async (req,res)=>{
         res.status(500).json({message: 'Server Error', error})
     }
 }
+
+exports.deleteHabit = async(req,res)=>{
+    try{
+        const habit = habitSchema.findOneAndDelete({
+            _id : req.params.id,
+            user: req.user.id
+        });
+
+        if(!habit){
+            return res.status(404).json({message: 'Habit not found'});
+        }
+        return res.status(200).json({message: 'Habit deleted successfully'})
+    }catch(error){
+        res.status(500).json({message: 'Server Error', error})
+    }
+}
