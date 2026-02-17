@@ -96,11 +96,10 @@ exports.completeHabit = async (req,res)=>{
 
 exports.deleteHabit = async(req,res)=>{
     try{
-        const habit = habitSchema.findOneAndDelete({
+        const habit = await habitSchema.findOneAndDelete({
             _id : req.params.id,
             user: req.user.id
         });
-
         if(!habit){
             return res.status(404).json({message: 'Habit not found'});
         }
